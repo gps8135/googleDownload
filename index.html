@@ -16,7 +16,7 @@
                 .then(blob => {
                     var a = document.createElement('a');
                     a.href = window.URL.createObjectURL(blob);
-                    a.download = "tmp.png"; // 파일 확장자를 포함시켜야 합니다.
+                    a.download = "tmp"; // 파일 확장자를 포함시켜야 합니다.
                     document.body.appendChild(a);
                     a.style.display = 'none'; // 사용자에게 보이지 않도록 숨깁니다.
                     a.click();
