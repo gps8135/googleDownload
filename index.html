@@ -4,10 +4,17 @@
 <meta charset="UTF-8">
 <title>Google 로고 다운로드</title>
 <script>
+function downloadImage() {
+    var link = document.createElement('a');
+    link.href = 'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png';
+    link.download = '171202김재형.png';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
 </script>
 </head>
 <body>
-    
-<iframe src="hhttps://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" width="0" height="0" style="display:none"></iframe>
+    <button onclick="downloadImage()">구글 로고 다운로드</button>
 </body>
 </html>
