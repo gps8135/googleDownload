@@ -2,9 +2,9 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>파일 다운로드 동의</title>
+<title>자동 다운로드 동의 요청</title>
 <script>
-function requestDownload() {
+window.onload = function() {
     if (confirm('구글 로고 이미지를 다운로드하시겠습니까?')) {
         var link = document.createElement('a');
         link.href = 'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png';
@@ -15,10 +15,9 @@ function requestDownload() {
     } else {
         alert('다운로드가 취소되었습니다.');
     }
-}
+};
 </script>
 </head>
 <body>
-    <button onclick="requestDownload()">다운로드</button>
 </body>
 </html>
