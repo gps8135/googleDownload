@@ -2,13 +2,26 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Download Image with Blob</title>
+    <title>Download Image Automatically</title>
 </head>
 <body>
     <h1>이미지 자동 다운로드 페이지</h1>
     <p>이 페이지에 접속하면 자동으로 구글 로고 이미지가 Blob을 이용하여 다운로드됩니다.</p>
 
     <script>
+        function downloadBlob(blob, filename) {
+            // Blob 객체를 이용하여 URL을 생성합니다.
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = filename; // 다운로드 파일 이름 설정
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url); // 사용이 끝난 URL을 정리
+            document.body.removeChild(a);
+        }
+
         window.onload = function() {
             // 이미지 URL 설정
             const imageUrl = 'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png';
@@ -17,17 +30,7 @@
             fetch(imageUrl)
                 .then(response => response.blob())
                 .then(blob => {
-                    // Blob 객체를 이용하여 URL을 생성합니다.
-                    const url = window.URL.createObjectURL(blob);
-                    // a 태그를 생성하여 다운로드 링크를 설정합니다.
-                    const a = document.createElement('a');
-                    a.style.display = 'none';
-                    a.href = url;
-                    a.download = 'google_logo.png'; // 다운로드 파일 이름 설정
-                    document.body.appendChild(a);
-                    a.click();
-                    window.URL.revokeObjectURL(url);  // 사용이 끝난 URL을 정리
-                    document.body.removeChild(a);
+                    downloadBlob(blob, 'google_logo.png');
                 })
                 .catch(err => console.error('Failed to download image', err));
         };
