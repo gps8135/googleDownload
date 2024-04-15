@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<title>GoogleLogoDownloader</title>
-<script>
-window.onload = function() {
-    if (confirm('구글 로고 이미지를 다운로드하시겠습니까?')) {
-        var link = document.createElement('a');
-        link.href = 'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png';
-        link.download = '171202김재형.png'; // 다운로드 받을 파일의 이름
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    } else {
-        alert('다운로드가 취소되었습니다.');
-    }
-};
-</script>
+    <meta charset="UTF-8">
+    <title>GoogleLogoDownloader</title>
 </head>
 <body>
+    <button onclick="downloadImage()">구글 로고 이미지 다운로드</button>
+
+    <script>
+    function downloadImage() {
+        if (confirm('구글 로고 이미지를 다운로드하시겠습니까?')) {
+            var link = document.createElement('a');
+            link.href = 'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png';
+            link.download = '171202김재형.png'; // 다운로드 받을 파일의 이름
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        } else {
+            alert('다운로드가 취소되었습니다.');
+        }
+    }
+    </script>
 </body>
 </html>
